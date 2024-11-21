@@ -4,6 +4,8 @@ import Page from "./pages/loginpages/LoggInPage";
 import ProductPage from "./pages/productpages/ProductPage";
 import ButtonContainer from "./Button/ButtonContainer";
 import Menu from "./components/menu/Menu";
+import TmdbMain from "./tmdb/tmdbMain";
+import { RouterProvider } from "react-router-dom";
 
 export default function App() {
   return (
@@ -13,6 +15,8 @@ export default function App() {
       {/* <ProductPage></ProductPage> */}
       {/* <ButtonContainer></ButtonContainer> */}
       {/* <Menu></Menu> */}
+      {/* <TmdbMain /> */}
+      <RouterProvider router={router}> </RouterProvider>
     </div>
   );
 }
