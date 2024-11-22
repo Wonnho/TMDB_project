@@ -1,5 +1,6 @@
 // Define the base URL and categories
 const BASE_URL = "https://api.themoviedb.org/3/movie";
+
 const categories = {
   nowPlaying: "now_playing",
   popular: "popular",

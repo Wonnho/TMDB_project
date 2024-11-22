@@ -6,7 +6,7 @@ import ButtonContainer from "./Button/ButtonContainer";
 import Menu from "./components/menu/Menu";
 import TmdbMain from "./tmdb/tmdbMain";
 import { RouterProvider } from "react-router-dom";
-
+import router from "./router";
 export default function App() {
   return (
     <div>

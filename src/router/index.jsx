@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home";
-import PostList from "../pages/PostList";
-import Hello from "../pages/Hello";
 import RootLayout from "../RootLayout";
-import PostDetail from "../pages/PostDetail";
-import NotFound from "../pages/NotFound";
-import PostCreate from "../pages/PostCreate";
-  
+import MovieList from "../pages/tmdbpages/MovieList";
+import MovieDetail from "../pages/tmdbpages/MovieDetail";
+import NotFound from "../pages/tmdbpages/NotFound";
+import Popular from "../pages/tmdbpages/categorypages/Popular";
+import NowPlaying from "../pages/tmdbpages/categorypages/NowPlaying";
+import TopRated from "../pages/tmdbpages/categorypages/TopRated";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,27 +14,31 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {
-        index: true,
-        element: <Home />,
-      },
-      {
         path: "/posts",
-        element: <PostList />,
+        element: <MovieList />,
+      },
+      // {
+      //   path: "/posts/:category",
+      //   element: <MovieCatetegory />,
+      // },
+      {
+        path: "/posts/now_playing",
+        element: <NowPlaying />,
       },
       {
-        path:"/posts/create",
-        element:<PostCreate/>
+        path: "/posts/top_rated",
+        element: <TopRated />,
       },
       {
-        path: "/posts/:postId",
-        element: <PostDetail />,
+        path: "/posts/popular",
+        element: <Popular />,
+      },
+      {
+        path: "/posts/:id",
+        element: <MovieDetail />,
       },
     ],
   },
-  // {
-  //   path: '/music',
-  //   element: <musiclayout></musiclayout>
-  // }
 ]);
 
 export default router;

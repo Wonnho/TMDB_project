@@ -13,3 +13,8 @@ li {
 .justify-between {
   justify-content: space-around;
 }
+
+.flex img {
+  width: 70%;
+  height: 80%;
+}
