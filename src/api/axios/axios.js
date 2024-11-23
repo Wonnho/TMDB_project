@@ -5,7 +5,7 @@ const instance = axios.create({
   params:{
    api_key: import.meta.env.VITE_API_KEY,
    language:"ko",
-  // region:"대한민국",
+  region:"대한민국",
   },
 });
 

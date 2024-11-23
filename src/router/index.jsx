@@ -3,40 +3,57 @@ import RootLayout from "../RootLayout";
 import MovieList from "../pages/tmdbpages/MovieList";
 import MovieDetail from "../pages/tmdbpages/MovieDetail";
 import NotFound from "../pages/tmdbpages/NotFound";
-import Popular from "../pages/tmdbpages/categorypages/Popular";
-import NowPlaying from "../pages/tmdbpages/categorypages/NowPlaying";
-import TopRated from "../pages/tmdbpages/categorypages/TopRated";
+// import Popular from "../pages/tmdbpages/categorypages/Popular";
+// import NowPlaying from "../pages/tmdbpages/categorypages/NowPlaying";
 
+import MovieCategory from "../pages/tmdbpages/categorypages/MovieCategory";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <NotFound />,
+    // errorElement: <NotFound />,
     children: [
       {
-        path: "/posts",
+        index: true,
         element: <MovieList />,
       },
+      {
+        path: "/movies/:category",
+        element: <MovieCategory />,
+      },
+
+      
       // {
-      //   path: "/posts/:category",
-      //   element: <MovieCatetegory />,
+      //   path: "/movies/category/:id",
+      //   element: <MovieDetail />,
       // },
+      
+      // {
+      //   path: "/movies/:category/:id",
+      //   element: <MovieDetail />,
+      // },
+
       {
-        path: "/posts/now_playing",
-        element: <NowPlaying />,
-      },
-      {
-        path: "/posts/top_rated",
-        element: <TopRated />,
-      },
-      {
-        path: "/posts/popular",
-        element: <Popular />,
-      },
-      {
-        path: "/posts/:id",
+        path: "/movies/:id",
         element: <MovieDetail />,
       },
+      // {
+      //   path: "/movies/category/",
+      //   element: <MovieCategory />,
+      // },
+
+      // {
+      //   path: "/movies/now_playing",
+      //   element: <NowPlaying />,
+      // },
+      // {
+      //   path: "/posts/top_rated",
+      //   element: <TopRated />,
+      // },
+      // {
+      //   path: "/posts/popular",
+      //   element: <Popular />,
+      // },
     ],
   },
 ]);
