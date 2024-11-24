@@ -1,59 +1,32 @@
 import { createBrowserRouter } from "react-router-dom";
-import RootLayout from "../RootLayout";
-import MovieList from "../pages/tmdbpages/MovieList";
-import MovieDetail from "../pages/tmdbpages/MovieDetail";
-import NotFound from "../pages/tmdbpages/NotFound";
-// import Popular from "../pages/tmdbpages/categorypages/Popular";
-// import NowPlaying from "../pages/tmdbpages/categorypages/NowPlaying";
+import Home from "../pages/Home";
+import MakeKnown from "../pages/MakeKnown";
+import Layout from "../Layout";
+import MakeKnownDetail from "../pages/MakeKnownDetail";
+import MakeKnownCreate from "../pages/MakeKnownCreate";
 
-import MovieCategory from "../pages/tmdbpages/categorypages/MovieCategory";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
-    // errorElement: <NotFound />,
+    element: <Layout />,
     children: [
       {
         index: true,
-        element: <MovieList />,
+        element: <Home />,
       },
-      {
-        path: "/movies/:category",
-        element: <MovieCategory />,
-      },
-
-      
-      // {
-      //   path: "/movies/category/:id",
-      //   element: <MovieDetail />,
-      // },
-      
-      // {
-      //   path: "/movies/:category/:id",
-      //   element: <MovieDetail />,
-      // },
 
       {
-        path: "/movies/:id",
-        element: <MovieDetail />,
+        path: "/makeknown",
+        element: <MakeKnown />,
       },
-      // {
-      //   path: "/movies/category/",
-      //   element: <MovieCategory />,
-      // },
-
-      // {
-      //   path: "/movies/now_playing",
-      //   element: <NowPlaying />,
-      // },
-      // {
-      //   path: "/posts/top_rated",
-      //   element: <TopRated />,
-      // },
-      // {
-      //   path: "/posts/popular",
-      //   element: <Popular />,
-      // },
+      {
+        path: "/makeknown/create",
+        element: <MakeKnownCreate />,
+      },
+      {
+        path: "/makeknown/:makeId",
+        element: <MakeKnownDetail />,
+      },
     ],
   },
 ]);

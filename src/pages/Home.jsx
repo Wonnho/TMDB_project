@@ -1,18 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Home() {
   return (
     <div>
-      <ul className="flex">
+      <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
+
         <li>
-          <Link to="makeknown">MakeKnown</Link>
-        </li>
-        <li>
-          <Link to="makeknown/create">MakeKnownCreate</Link>
+          <Link to="/makeknown">MakeKnown</Link>
         </li>
       </ul>
     </div>

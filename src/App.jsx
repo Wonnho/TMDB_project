@@ -1,35 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Logging from "./log/Logging";
 import Page from "./pages/loginpages/LoggInPage";
-import ProductPage from "./pages/productpages/ProductPage";
-import ButtonContainer from "./Button/ButtonContainer";
 import Menu from "./components/menu/Menu";
 import TmdbMain from "./tmdb/tmdbMain";
 import { RouterProvider } from "react-router-dom";
-import router from "./router";
-import Button from "./eventhandler/Button";
-import Counter from "./components/Counter";
+import router from "./router/index.jsx";
+import { Provider } from "react-redux";
+import store from "./store/store.js";
 
 export default function App() {
-  function alertMessage(event) {
-    console.log(event.target.textContent);
-    alert("catious when use dynamic routing ");
-  }
+  const [data, setData] = useState();
 
   return (
     <>
-      {/* <div onClick={alertMessage}> */}
-        {/* warning!!! */}
-        <Counter></Counter>
-        {/* <Logging isLoggedIn={false} />
-      <Page /> */}
-        {/* <ProductPage></ProductPage> */}
-        {/* <ButtonContainer></ButtonContainer> */}
-        {/* <Menu></Menu> */}
-        {/* <TmdbMain /> */}
-        {/* <RouterProvider router={router}> </RouterProvider> */}
-        {/* <Button></Button> */}
-      {/* </div> */}
+      <Provider store={store}>
+        <RouterProvider router={router}> </RouterProvider>
+      </Provider>
     </>
   );
 }
