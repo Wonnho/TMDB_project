@@ -9,13 +9,9 @@ import { Provider } from "react-redux";
 import store from "./store/store.js";
 
 export default function App() {
-  const [data, setData] = useState();
-
   return (
-    <>
-      <Provider store={store}>
-        <RouterProvider router={router}> </RouterProvider>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   );
 }

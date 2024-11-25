@@ -4,13 +4,20 @@
 
 .flex {
   display: flex;
-  padding: 5px;
 }
 
 li {
   list-style-type: none;
-}
+  padding: 5px;
+  margin: 0 10px;
+  font-weight: 200;
+ }
 
+ a {
+  text-decoration: none;
+ 
+ }
+ 
 .justify-between {
   justify-content: space-around;
 }

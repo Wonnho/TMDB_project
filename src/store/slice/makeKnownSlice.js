@@ -25,8 +25,12 @@ const initialState = [
 const makeknownSlice = createSlice({
   name: "makeknown",
   initialState,
-  reducers: {},
+  reducers: {
+    addWriting:(state,action)=>{
+      state.push(action.payload)
+    }
+  },
 });
 
-export const { addPost } = makeknownSlice.actions;
+export const { addWriting } = makeknownSlice.actions;
 export default makeknownSlice.reducer;
