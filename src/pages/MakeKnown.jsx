@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import postApi from "../api/postAPI2";
 
-export default function MakeKnown() {
+function MakeKnown() {
   // const [makes,setMakes]=useState([])
 
   // move dat to makeKnownSlice.js
@@ -35,13 +37,43 @@ export default function MakeKnown() {
   //   },
   // ];
 
+  const [makeknown, setMakeknown] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const url = "http://localhost:3000/makeknown";
   const navigate = useNavigate();
-  const lists = useSelector((state) => state.makeknown);
+
+  useEffect(() => {
+    async function fetchMakeknown() {
+      try {
+        // const response = await axios.get(url);
+        // const data = response.data;
+        // setLoading(false);
+        // setMakeknown(data);
+        const data=await axios({url:url});
+      } catch (err) {
+        // console.log("error");
+        navigate("/not-found", { replace: true });
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchMakeknown();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div>
-      <h3>MakeKnown</h3>
+      <h3>Makeknown</h3>
       <ul>
-        {lists.map((make) => (
+        {makeknown.map((make) => (
           <li key={make.id}>
             <Link to={`/makeknown/${make.id}`} state={{ lists: make }}>
               <h3>{make.title}</h3>
@@ -53,3 +85,5 @@ export default function MakeKnown() {
     </div>
   );
 }
+
+export default MakeKnown;

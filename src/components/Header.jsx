@@ -1,18 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { login, logout } from "../store/slice/authSlice";
 
 export default function Header() {
   const { isLoggedIn } = useSelector((state) => state.auth);
+  const dispatch=useDispatch()
   console.log(isLoggedIn);
   return (
     <header>
       <div>
         {isLoggedIn ? (
-          <button onClick={() => {}}>LogIn</button>
+          <button onClick={() => {dispatch(logout())}}>LogIn Mode</button>
         ) : (
-          <button onClick={() => {}}>LogOut</button>
+          <button onClick={() => {dispatch(login())}}>LogOut Mode</button>
         )}
       </div>
       <div>
@@ -21,11 +22,12 @@ export default function Header() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="makeknown">MakeKnown</Link>
+            <Link to="makeknown">게시글</Link>
           </li>
+            {isLoggedIn&&(
           <li>
-            <Link to="makeknown/create">MakeKnownCreate</Link>
-          </li>
+            <Link to="makeknown/create">글쓰기</Link>
+            </li>)}
         </ul>
       </div>
     </header>

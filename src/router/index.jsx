@@ -4,7 +4,7 @@ import MakeKnown from "../pages/MakeKnown";
 import Layout from "../Layout";
 import MakeKnownDetail from "../pages/MakeKnownDetail";
 import MakeKnownCreate from "../pages/MakeKnownCreate";
-
+import NotFound from "../pages/tmdbpages/NotFound";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,6 +14,8 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+
+      { path: "/not-found", element: <NotFound></NotFound> },
 
       {
         path: "/makeknown",

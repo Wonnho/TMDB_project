@@ -1,56 +1,65 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addWriting } from "../store/slice/makeKnownSlice";
+import React, { useEffect, useState } from "react";
+// import { useDispatch } from "react-redux";
+// import { addWriting } from "../store/slice/makeKnownSlice";
 import { useNavigate } from "react-router-dom";
+import isLoggedIn from "../log/Logging";
+import { login, logout } from "../store/slice/authSlice";
+import axios from "axios";
+// import { formHandler } from "../utils/formHandler";
 
 export default function MakeKnownCreate() {
   // Move useState to component level
   const [formData, setFormData] = useState({ title: "", content: "" });
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // Define handler functions at component level
-  // function handleTitleChange(e) {
-  //   const inputValue = e.target.value;
-  //   setFormData({
-  //     ...formData,
-  //     title: inputValue,
-  //   });
-  // }
-
-  // function handleContentChange(e) {
-  //   const inputValue = e.target.value;
-  //   setFormData({
-  //     ...formData,
-  //     content: inputValue,
-  //   });
 
   //합치기
   function handleChange(e) {
     const inputValue = e.target.value;
     const key = e.target.name;
-
     setFormData({
       ...formData,
       [key]: inputValue,
     });
   }
 
+  // useEffect(() => {
+  //   if (!isLoggedIn) {
+  //     navigate("/");
+  //   }
+  // }, [isLoggedIn]);
+  // setFormData({
+  //   ...formData,
+  //   [key]: inputValue,
+  // });
+
   const id = Date.now();
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(formData);
-    dispatch(addWriting({ ...formData, id }));
-    navigate(`/makeknown/${id}`);
+    // console.log(formData);
+    // dispatch(addWriting({ ...formData, id }));
+    // navigate(`/makeknown/${id}`);
+
+    const url = "http://localhost:3000/makeknown";
+    // const url = "http://localhost:3000/posts";
+    async function createMakeKnown() {
+      const response = await axios.post(url, formData);
+      const data = response.data;
+      setFormData(data);
+      const id = data.id;
+      navigate(`/makeknown/${id}`);
+    }
+    createMakeKnown();
   }
 
   return (
     <>
       <form
-        action="https://jsonplaceholder.typicode.com/makeknown"
+        // action="https://jsonplaceholder.typicode.com/makeknown"
         onSubmit={handleSubmit}
       >
+        <div className="formBox">
         <label htmlFor="title">
           제목:
           <input
@@ -59,8 +68,11 @@ export default function MakeKnownCreate() {
             id="title"
             value={formData.title}
             onChange={handleChange}
+            // onChange={formHandler}
           />
         </label>
+        </div>
+        <div className="formBox">
         <label htmlFor="content">
           content
           <textarea
@@ -69,7 +81,7 @@ export default function MakeKnownCreate() {
             value={formData.content}
             onChange={handleChange}
           ></textarea>
-        </label>
+        </label></div>
         <button type="submit">submit</button>
       </form>
     </>
