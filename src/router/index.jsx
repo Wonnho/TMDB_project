@@ -5,6 +5,8 @@ import Layout from "../Layout";
 import MakeKnownDetail from "../pages/MakeKnownDetail";
 import MakeKnownCreate from "../pages/MakeKnownCreate";
 import NotFound from "../pages/tmdbpages/NotFound";
+// import LoginForm from "../pages/auth/LoginForm";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,9 +16,14 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-
-      { path: "/not-found", element: <NotFound></NotFound> },
-
+      // {
+      //   path: "/login",
+      //   element: <LoginForm />,
+      // },
+      {
+        path: "/not-found",
+        element: <NotFound />,
+      },
       {
         path: "/makeknown",
         element: <MakeKnown />,
@@ -28,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/makeknown/:makeId",
         element: <MakeKnownDetail />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
