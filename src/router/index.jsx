@@ -5,7 +5,7 @@ import Layout from "../Layout";
 import MakeKnownDetail from "../pages/MakeKnownDetail";
 import MakeKnownCreate from "../pages/MakeKnownCreate";
 import NotFound from "../pages/tmdbpages/NotFound";
-// import LoginForm from "../pages/auth/LoginForm";
+import LoginForm from "../pages/auth/LoginForm";
 
 const router = createBrowserRouter([
   {
@@ -16,10 +16,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-      // {
-      //   path: "/login",
-      //   element: <LoginForm />,
-      // },
+      {
+        path: "/login",
+        element: <LoginForm />,
+      },
       {
         path: "/not-found",
         element: <NotFound />,

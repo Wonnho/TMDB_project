@@ -20,13 +20,13 @@ export default function Header() {
             LogIn
           </button>
         ) : (
+          // <button
+          //   onClick={() => {
+          //     dispatch(login());;
+        // ) : (
           <button
             onClick={() => {
-              dispatch(login());;
-        // ) : (
-        //   <button
-        //     onClick={() => {
-        //       navigate("/login");
+              navigate("/login");
             }}
           >
             LogOut
@@ -39,11 +39,11 @@ export default function Header() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="makeknown">게시글</Link>
+            <Link to="movie">TMDB movies</Link>
           </li>
           {isLoggedIn && (
             <li>
-              <Link to="makeknown/create">글쓰기</Link>
+              <Link to="movie/create">영화바구니</Link>
             </li>
           )}
         </ul>

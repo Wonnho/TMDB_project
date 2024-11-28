@@ -15,19 +15,24 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <Home />,
+      },
+      {
+        path: "/movie",
         element: <MovieList />,
       },
       {
-        path: "/movies/:category",
+        // path: "/movies/:category", // 이걸 쓰면 movies/:id 랑 같은 코드여서
+        // path: "/movies/category/:category", // movies/:id랑 구별을 주는 해당 코드를 사용하여야 한다
+
         element: <MovieCategory />,
       },
 
-      
       // {
       //   path: "/movies/category/:id",
       //   element: <MovieDetail />,
       // },
-      
+
       // {
       //   path: "/movies/:category/:id",
       //   element: <MovieDetail />,
